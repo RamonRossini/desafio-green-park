@@ -2,7 +2,6 @@ import { IsBoolean, IsOptional } from "class-validator";
 import { IsNumber } from "class-validator";
 import { IsNotEmpty } from "class-validator";
 import { IsString } from "class-validator";
-import { Lote } from "src/lotes/entities/lote.entity";
 
 export class CreateBoletoDto {
 

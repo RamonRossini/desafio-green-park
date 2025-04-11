@@ -64,7 +64,7 @@ export class BoletosService {
       const names: string[] = [];
 
       // Encontra nomes e seus números de página correspondentes
-      lines.forEach((line, index) => {
+      lines.forEach((line: string) => {
         if (line.includes('Nome')) {
           const name = line.split(':')[1].trim();
           names.push(name);
