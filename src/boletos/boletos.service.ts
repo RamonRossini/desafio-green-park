@@ -1,13 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBoletoDto } from './dto/create-boleto.dto';
-import { UpdateBoletoDto } from './dto/update-boleto.dto';
 import { parse } from 'csv-parse/sync';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, ILike, Repository } from 'typeorm';
 import { Boleto } from './entities/boleto.entity';
 import { IBoletoParsed } from './interfaces/boleto.interface';
 import { LotesService } from 'src/lotes/lotes.service';
-// import * as pdfParse from 'pdf-parse';
 import * as pdfParse from 'pdf-parse';
 import { PDFDocument } from 'pdf-lib';
 import * as fs from 'fs';
@@ -102,10 +100,6 @@ export class BoletosService {
     } catch (error) {
       throw new Error(`Error processing PDF: ${error.message}`);
     }
-  }
-
-  create(createBoletoDto: CreateBoletoDto) {
-    return 'This action adds a new boleto';
   }
 
   async findAll(
@@ -203,22 +197,10 @@ export class BoletosService {
     })
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} boleto`;
-  }
-
   async findOneByName(name: string): Promise<Boleto | null> {
     return await this.boletosRepository.findOne({
       where: { nome_sacado: ILike(`%${name}%`) }
     });
-  }
-
-  update(id: number, updateBoletoDto: UpdateBoletoDto) {
-    return `This action updates a #${id} boleto`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} boleto`;
   }
 
   async removeAll(): Promise<DeleteResult> {

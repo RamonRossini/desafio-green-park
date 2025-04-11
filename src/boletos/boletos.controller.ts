@@ -1,8 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, Query } from '@nestjs/common';
+import { Controller, Get, Post, Delete, UseInterceptors, UploadedFile, Query } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { BoletosService } from './boletos.service';
-import { CreateBoletoDto } from './dto/create-boleto.dto';
-import { UpdateBoletoDto } from './dto/update-boleto.dto';
 
 @Controller('boletos')
 export class BoletosController {
@@ -21,11 +19,6 @@ export class BoletosController {
     return this.boletosService.importFromPDF(file);
   }
 
-  @Post()
-  create(@Body() createBoletoDto: CreateBoletoDto) {
-    return this.boletosService.create(createBoletoDto);
-  }
-
   @Get()
   findAll(
     @Query('nome') nome: string,
@@ -36,21 +29,6 @@ export class BoletosController {
   ) {
     const hasRelatorio = !!relatorio && relatorio == 1;
     return this.boletosService.findAll(nome, valor_inicial, valor_final, id_lote, hasRelatorio);
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.boletosService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBoletoDto: UpdateBoletoDto) {
-    return this.boletosService.update(+id, updateBoletoDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.boletosService.remove(+id);
   }
 
   @Delete()
