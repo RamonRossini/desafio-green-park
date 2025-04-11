@@ -1,11 +1,18 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { BoletosService } from './boletos.service';
 import { CreateBoletoDto } from './dto/create-boleto.dto';
 import { UpdateBoletoDto } from './dto/update-boleto.dto';
 
 @Controller('boletos')
 export class BoletosController {
-  constructor(private readonly boletosService: BoletosService) {}
+  constructor(private readonly boletosService: BoletosService) { }
+
+  @Post('import')
+  @UseInterceptors(FileInterceptor('file'))
+  async importBoletos(@UploadedFile() file: Express.Multer.File) {
+    return this.boletosService.importFromCSV(file);
+  }
 
   @Post()
   create(@Body() createBoletoDto: CreateBoletoDto) {
@@ -31,4 +38,10 @@ export class BoletosController {
   remove(@Param('id') id: string) {
     return this.boletosService.remove(+id);
   }
+
+  @Delete()
+  removeAll() {
+    return this.boletosService.removeAll();
+  }
+
 }

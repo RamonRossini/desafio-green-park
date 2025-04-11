@@ -9,7 +9,7 @@ export class Lote {
     @Column({ type: 'varchar', length: 100 })
     nome: string;
 
-    @Column({ type: 'boolean' })
+    @Column({ type: 'boolean', default: true })
     ativo: boolean;
 
     @CreateDateColumn({ type: 'timestamp' })

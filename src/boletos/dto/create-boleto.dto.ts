@@ -1,4 +1,4 @@
-import { IsBoolean } from "class-validator";
+import { IsBoolean, IsOptional } from "class-validator";
 import { IsNumber } from "class-validator";
 import { IsNotEmpty } from "class-validator";
 import { IsString } from "class-validator";
@@ -12,7 +12,7 @@ export class CreateBoletoDto {
 
     @IsNumber()
     @IsNotEmpty()
-    id_lote: Lote;
+    id_lote: number;
 
     @IsNumber()
     @IsNotEmpty()
@@ -23,7 +23,7 @@ export class CreateBoletoDto {
     linha_digitavel: string;
 
     @IsBoolean()
-    @IsNotEmpty()
-    ativo: boolean;
+    @IsOptional()
+    ativo?: boolean;
 
 }

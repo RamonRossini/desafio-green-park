@@ -1,4 +1,4 @@
-import { IsBoolean, IsNotEmpty, IsString, MaxLength } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsOptional, IsString, MaxLength } from "class-validator";
 
 export class CreateLoteDto {
 
@@ -8,7 +8,7 @@ export class CreateLoteDto {
     nome: string;
 
     @IsBoolean()
-    @IsNotEmpty()
-    ativo: boolean;
+    @IsOptional()
+    ativo?: boolean;
 
 }

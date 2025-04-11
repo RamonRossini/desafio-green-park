@@ -50,6 +50,11 @@ Para as validações de tipo instalamos o <b>Class Validator</b>
 npm i --save class-validator class-transformer
 ```
 
+<!-- Para as validações de tipo instalamos o <b>Class Validator</b> -->
+```bash
+npm i -D @types/multer
+```
+
 ## Project setup
 
 ```bash
@@ -108,10 +113,12 @@ Check out a few resources that may come in handy when working with NestJS:
 - To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
 - Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
 
-## Contact
+## Contato
 
 - Author - [Ramon Rossini](https://www.linkedin.com/in/ramon-rossini/)
 
-## License
+## Documentações
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- [NestJS Docs](https://docs.nestjs.com/)
+- [TypeORM](https://typeorm.io/)
+- [CSV Parse](https://github.com/adaltas/node-csv/blob/master/packages/csv-parse/README.md)

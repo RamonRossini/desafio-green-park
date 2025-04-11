@@ -10,7 +10,7 @@ export class Boleto {
     @Column({ type: 'varchar', length: 255 })
     nome_sacado: string;
 
-    @ManyToOne(() => Lote)
+    @ManyToOne(() => Lote, (lote) => lote.id)
     @JoinColumn({ name: 'id_lote' })
     id_lote: Lote;
 
@@ -20,7 +20,7 @@ export class Boleto {
     @Column({ type: 'varchar', length: 255 })
     linha_digitavel: string;
 
-    @Column({ type: 'boolean' })
+    @Column({ type: 'boolean', default: true })
     ativo: boolean;
 
     @CreateDateColumn({ type: 'timestamp' })
