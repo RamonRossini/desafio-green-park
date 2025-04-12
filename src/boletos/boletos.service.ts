@@ -138,7 +138,8 @@ export class BoletosService {
       if (pdfBase64)
         response.pdfBase64 = pdfBase64;
 
-      fs.unlinkSync(path.join(__dirname, '../..', 'assets', 'pdfs', 'relatorio.pdf'));
+      if (fs.existsSync(path.join(__dirname, '../..', 'assets', 'pdfs', 'relatorio.pdf')))
+        fs.unlinkSync(path.join(__dirname, '../..', 'assets', 'pdfs', 'relatorio.pdf'));
 
       return response;
     } catch (error) {
