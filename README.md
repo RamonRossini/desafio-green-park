@@ -3,6 +3,9 @@
 Documentação dos endpoints com <b>Swagger</b><br/>
 http://localhost:3000/api
 
+<b style="color: orangered">IMPORTANTE</b></br>
+O <b>.csv</b> e o <b>.pdf</b> para os testes estão no diretório em _assets/externos_
+
 Para testar o <b>PDF em base64</b><br/>
 https://base64.guru/converter/decode/pdf
 
